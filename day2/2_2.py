@@ -30,7 +30,7 @@ class Game:
                 return False
         return True
     
-    def set_power(self) -> int:
+    def power_of_gameset(self) -> int:
         min_red, min_green, min_blue = 0, 0, 0
         for round in self.rounds:
             min_red = max(min_red, round.r)
@@ -61,6 +61,6 @@ power_sum = 0
 with open("input_1", 'r') as f:
     while (line := f.readline()):
         game = Game.parse_line(line)
-        power_sum += game.set_power()
+        power_sum += game.power_of_gameset()
 
 print(power_sum)

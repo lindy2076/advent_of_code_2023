@@ -1,10 +1,3 @@
-from colorama import init as colorama_init
-from colorama import Fore, Back
-from colorama import Style
-
-colorama_init()
-
-
 class NumberAndPos:
     def __init__(self, num: int, l: int, r: int):
         self.l = l
@@ -107,28 +100,6 @@ def get_table_from_file(filename: str) -> list[list[str]]:
     return lines_table
 
 
-def print_table(table: list[list[str]]):
-    for line in table:
-        print("".join(line))
-    print("\n")
-
-
-def print_mapped_table(table: list[list[str]]):
-    mapped_table = map_numbers_to_table(table)
-    for idx, line in enumerate(mapped_table):
-        s = ""
-        for idx2, e in enumerate(line):
-            if table[idx][idx2] == "*":
-                s += Fore.RED + "*" + Style.RESET_ALL
-            elif e is None:
-                s += "."
-            else:
-                s += str(e.num)[0]
-        print(s)
-    print("\n")
-
-
 for filename in ["3_test", "3_input"]:
     table = get_table_from_file(filename)
-    # print_mapped_table(table)
     print(get_sum_of_all_gear_ratios(table))

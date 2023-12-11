@@ -54,11 +54,6 @@ class LineProcessor():
         return f"{self.line_type()}: {self.line}"
 
 
-class GardenHelper():
-    def __init__(self, ):
-        ...
-
-
 for filename in ["5_test", "5_input"]:
     with open(filename, 'r') as f:
         maps = {}
@@ -80,16 +75,13 @@ for filename in ["5_test", "5_input"]:
 
         locations = {}
         for seed in seeds:
-            # print("SEED NUMBER", seed)
             curr_key = seed
             map_ = maps["seed"]
             while (map_.maps_to() != "location"):
-                # print(curr_key, map_.maps_to(), map_.name)
                 curr_key = map_.get_value(curr_key) 
                 map_ = maps[map_.maps_to()]
             
             location = map_.get_value(curr_key)
-            # print(location, map_.maps_to(), map_.name)
             locations[seed] = location 
         
         print(min(locations.values()))
